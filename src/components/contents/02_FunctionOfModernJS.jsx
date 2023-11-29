@@ -522,15 +522,158 @@ export default function FunctionOfModernJS(t) {
             参照値は引き継がれず新しい配列を生成することができます。
 
             <h2>オブジェクトの省略記法</h2>
+            オブジェクトの記述の仕方で、使用頻度の高い省略記法があります。<br/>
+            それは<b>「オブジェクトのプロパティ名」と「設定する変数名」が同一の場合は省略できる</b>というものです。
 
+            <div className="logic">
+                <span className="span-tub">例：プロパティ名と変数名が同一の場合その１</span>
+
+                const name = "佐藤";<br/>
+                const age = 36;<br/>
+                <br/>
+                <font color="blue">// ユーザーオブジェクトを定義（nameとage）</font><br/>
+                const user = {'{'}<br/>
+                　name: name,<br/>
+                　age: age,<br/>
+                {'};'}
+                <br/>
+                console.log(user);
+                <font color="blue">　{'// {name: "佐藤", age: 36}'}</font><br/>
+            </div>
+
+            この例の場合、プロパティ名と変数名が同一なので、次のように記述することもできます。
+
+            <div className="logic">
+                <span className="span-tub">例：プロパティ名と変数名が同一の場合その２</span>
+
+                const name = "佐藤";<br/>
+                const age = 36;<br/>
+                <br/>
+                <font color="blue">// 省略記法</font><br/>
+                const user = {'{'}<br/>
+                　name,<br/>
+                　age,<br/>
+                {'};'}
+                <br/>
+                console.log(user);
+                <font color="blue">　{'// {name: "佐藤", age: 36}'}</font><br/>
+            </div>
+
+            オブジェクトの設定で<b>:（コロン）</b>以降を省略し、1つにまとめることができました。
 
             <h2>map、filter</h2>
+            配列の処理で頻出するmapとfilterについて紹介します。
 
+            <h3>従来のfor文</h3>
+            従来、配列をループして処理する場合、for文を使用し以下のように扱っていました。
 
-            <h2>三項演算子</h2>
+            <div className="logic">
+                <span className="span-tub">例：従来のfor文</span>
+                
+                <font color="blue">// 配列を定義</font><br/>
+                const nameArr = ["あ", "い", "う"];<br/>
+                <br/>
+                <font color="blue">// for文を使って配列処理</font><br/>
+                {'for (let index = 0; index < nameArr.length; index++) {'}<br/>
+                　console.log(nameArr[index]);<br/>
+                {'}'}<br/>
+                <font color="blue">
+                    // あ<br/>
+                    // い<br/>
+                    // う<br/>
+                </font>
+            </div>
 
+            配列の要素数分ループ処理を回して、ループ毎にindexを増加させ、
+            配列の要素にindexを用いてアクセスすることで順番に処理をします。<br/>
+            <br/>
+            構文も複雑で記述量もどうしても増えてしまいます。
 
-            <h2>論理演算子の本当の意味（&& ||）</h2>
+            <h3>map関数の使い方</h3>
+            map関数を使用するとどうなるか見てみましょう。<br/>
+            map関数では、配列を順番に処理した結果を配列として受け取ることができます。
+
+            <div className="logic">
+                <span className="span-tub">例：配列.map( ) STEP1</span>
+                
+                <font color="blue">// 配列を定義</font><br/>
+                const nameArr = ["あ", "い", "う"];<br/>
+                <br/>
+                <font color="blue">// 配列.map( )として使用する</font><br/>
+                const nameArr2 = nameArr.map( );
+            </div>
+
+            まずmap関数は配列に対して<b>配列.map( )</b>という形で使用します。
+
+            <div className="logic">
+                <span className="span-tub">例：配列.map( ) STEP2</span>
+                
+                <font color="blue">// 配列を定義</font><br/>
+                const nameArr = ["あ", "い", "う"];<br/>
+                <br/>
+                <font color="blue">// 配列.map(関数)として使用する</font><br/>
+                const nameArr2 = nameArr.map{'(( ) => );'}
+            </div>
+
+            そして<b>( )</b>の中には関数を書きます。<br/>
+            関数は任意の名前をつけた引数を取ることができ、そこに配列の中身が入ってきます。
+
+            <div className="logic">
+                <span className="span-tub">例：配列.map( ) STEP3</span>
+                
+                <font color="blue">// 配列を定義</font><br/>
+                const nameArr = ["あ", "い", "う"];<br/>
+                <br/>
+                <font color="blue">// 配列.map(関数)として使用する</font><br/>
+                const nameArr2 = nameArr.map{'((name) => {);'}<br/>
+                　return name;<br/>
+                {'};'}<br/>
+                <br/>
+                console.log(nameArr2);
+                <font color="blue">// ["あ", "い", "う"]</font>
+            </div>
+
+            上記は順に処理する中で値をそのまま返しているので、同じ配列が設定されるという無意味な処理ですが、
+            これが基本的なmapの使い方です。<br/>
+            <br/>
+            最初のfor文の例をmap関数で書き換えてみます。
+
+            <div className="logic">
+                <span className="span-tub">例：map関数を使用</span>
+                
+                <font color="blue">// 配列を定義</font><br/>
+                const nameArr = ["あ", "い", "う"];<br/>
+                <br/>
+                <font color="blue">// mapを使って配列処理</font><br/>
+                {'nameArr.map(( ) => console.log(name));'}<br/>
+                <font color="blue">
+                    // あ<br/>
+                    // い<br/>
+                    // う<br/>
+                </font>
+            </div>
+
+            <h3>filter関数の使い方</h3>
+            filter関数はmap関数とほとんど使い方が同じですが、
+            <b>returnの後に条件式を記述して一致する要素のみが返却</b>されます。<br/>
+            以下は数字の配列から奇数のみ取り出す例です。
+
+            <div className="logic">
+                <span className="span-tub">例：filter関数で奇数のみを取り出す</span>
+                
+                <font color="blue">// 配列を定義</font><br/>
+                const numArr = [1, 2, 3, 4, 5];<br/>
+                <br/>
+                <font color="blue">// 奇数（2で割った余りが1）のみ抽出</font><br/>
+                {'const newNumArr = numArr.filter((num) => {'}<br/>
+                　return num % 2 === 1;<br/>
+                {'});'}<br/>
+                <br/>
+                console.log(newNumArr);
+                <font color="blue">　// [1, 3, 5]</font>
+            </div>
+
+            このようにfilter関数は条件に一致する値のみ配列の中から取り出すことができます。
             
         </div>
     );
