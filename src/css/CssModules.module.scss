@@ -1,0 +1,62 @@
+h1 {
+    position: relative;
+    overflow: hidden;
+    padding: 1.5rem 2rem 1.5rem 130px;
+    border: 2px solid #000;
+  }
+  
+h1:before {
+    position: absolute;
+    top: -150%;
+    left: -100px;
+    width: 220px;
+    height: 300%;
+    content: '';
+    -webkit-transform: rotate(25deg);
+    transform: rotate(25deg);
+    background: rgb(0, 0, 0);
+}
+  
+h1 span {
+    font-size: 40px;
+    font-size: 4rem;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    display: block;
+    padding-top: 3px;
+    padding-left: 16px;
+    color: #fff;
+}
+
+h2 {
+    position: relative;
+    // margin-top: 3rem;
+    padding: 1rem 2rem;
+    text-align: left;
+    color: #0075a9;
+    border-radius: 10px 10px 10px 10px;
+    background: #d8ecf5;
+}
+  
+h2:before {
+    font-size: 15px;
+    font-size: 1.5rem;
+    position: absolute;
+    top: -30px;
+    left: 0;
+    height: 30px;
+    padding: 0 1em;
+    content: '\POINT';
+    color: #fff;
+    border-radius: 10px 10px 0 0;
+    background: #0075a9;
+}
+
+h3 {
+    padding: 1rem 2rem;
+    border-left: 4px solid #0075a9;
+    color: #0075a9;
+}
+
