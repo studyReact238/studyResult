@@ -483,7 +483,21 @@ export default function FunctionOfModernJS(t) {
             <br/>
             以下は=でコピーしたあとの配列に操作を加えたことで、コピー元の配列にも影響が出てしまう例です。
 
-            {/* 11/29はここから。P.54。 */}
+            <div className="logic">
+                <span className="span-tub">例：コピーに起因する予期せぬ挙動</span>
+                const arr4 = [10, 20];<br/>
+
+                <font color="blue">// =でコピー</font><br/>
+                const arr8 = arr4;<br/>
+
+                <font color="blue">// arr8の最初の要素を書き換える</font><br/>
+                arr8[0] = 100;<br/>
+                <br/>
+                console.log(arr4);
+                <font color="blue">　// [100, 20]</font><br/>
+                console.log(arr8);
+                <font color="blue">　// [100, 20]</font><br/>
+            </div>
 
             <h2>オブジェクトの省略記法</h2>
 

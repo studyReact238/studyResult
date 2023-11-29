@@ -31,7 +31,7 @@
 
     "del": "rmdir /s /q docs",
     "mv": "move build docs",
-    "git": "git add . && git commit -m && git push origin main",
+    "git": "git add . && git commit -m 'test' && git push origin main",
     "deploy": "npm run del && npm run build && npm run mv && npm run git"
   },
   "eslintConfig": {
