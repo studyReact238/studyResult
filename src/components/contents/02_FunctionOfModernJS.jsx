@@ -486,10 +486,10 @@ export default function FunctionOfModernJS(t) {
             <div className="logic">
                 <span className="span-tub">例：コピーに起因する予期せぬ挙動</span>
                 const arr4 = [10, 20];<br/>
-
+                <br/>
                 <font color="blue">// =でコピー</font><br/>
                 const arr8 = arr4;<br/>
-
+                <br/>
                 <font color="blue">// arr8の最初の要素を書き換える</font><br/>
                 arr8[0] = 100;<br/>
                 <br/>
@@ -498,6 +498,28 @@ export default function FunctionOfModernJS(t) {
                 console.log(arr8);
                 <font color="blue">　// [100, 20]</font><br/>
             </div>
+
+            このように、=でコピーするとコピー後の配列への操作がコピー元の配列にも影響を与えます。<br/>
+            ではスプレッド構文を用いたコピーはどうなるでしょうか。
+
+            <div className="logic">
+                <span className="span-tub">例：スプレッド構文を用いたコピー</span>
+                const arr4 = [10, 20];<br/>
+                <br/>
+                <font color="blue">// スプレッド構文でコピー</font><br/>
+                const arr8 = [...arr4];<br/>
+                <br/>
+                <font color="blue">// arr8の最初の要素を書き換える</font><br/>
+                arr8[0] = 100;<br/>
+                <br/>
+                console.log(arr4);
+                <font color="blue">　// [10, 20]</font><br/>
+                console.log(arr8);
+                <font color="blue">　// [100, 20]</font><br/>
+            </div>
+
+            スプレッド構文を用いた場合、中身を展開して渡しているだけなので、
+            参照値は引き継がれず新しい配列を生成することができます。
 
             <h2>オブジェクトの省略記法</h2>
 
